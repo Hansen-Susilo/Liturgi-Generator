@@ -326,7 +326,8 @@ def GetVerse(text):
             while verseListIndex < len(verseList):
                 versesIndex = int(verseList[verseListIndex]) - 1 + count
                 if str(verses[versesIndex]['verse']) == verseList[verseListIndex]:
-                    content += f'{verses[versesIndex]['content']} '
+                    # content += f'{verses[versesIndex]['content']} '
+                    content += verses[versesIndex]['content'] + " "
                     verseListIndex += 1
                     count = 0
                 else:
