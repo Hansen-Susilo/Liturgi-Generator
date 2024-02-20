@@ -1,7 +1,9 @@
 from docx import Document
 from .helpers import GetLyricsWeb, GetLyricsFile, GetVerse
 import os
-base_dir = 'D:\\Data Hansen\\Data Programming\\Projects\\Liturgi Generator\\src\\'
+from django.conf import settings
+# base_dir = 'D:\\Data Hansen\\Data Programming\\Projects\\Liturgi Generator\\src\\'
+base_dir = settings.BASE_DIR
 
 def NewDocument(data):
     # Get User Input

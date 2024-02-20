@@ -2,7 +2,9 @@ from bs4 import BeautifulSoup
 import requests
 import os
 import json
-base_dir = 'D:\\Data Hansen\\Data Programming\\Projects\\Liturgi Generator\\src\\'
+from django.conf import settings
+# base_dir = 'D:\\Data Hansen\\Data Programming\\Projects\\Liturgi Generator\\src\\'
+base_dir = settings.BASE_DIR
 delimiter = '~*~'
 
 
