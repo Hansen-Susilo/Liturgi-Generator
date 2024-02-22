@@ -1,5 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from .handler import NewDocument
+from django.conf import settings
+import os
 
 def index(response):
     return render(response, "index.html", {})
@@ -56,16 +58,15 @@ def generator(response):
         
         if validate:
             # Make New Document
-            NewDocument(data)
+            newDoc = NewDocument(data)
 
             date = response.POST['date']
             fileName = f'Liturgi Remaja - {date}.docx'
 
             # Send The Document to User
-            with open('New_Liturgi.docx', 'rb') as document_file:
-                doc = HttpResponse(document_file.read(), content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-                doc['Content-Disposition'] = f'attachment; filename={fileName}'
-                return doc
+            doc = HttpResponse(newDoc.read(), content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+            doc['Content-Disposition'] = f'attachment; filename={fileName}'
+            return doc
         else:
             return render(response, 'generator.html', context)
 

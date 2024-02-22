@@ -4,6 +4,7 @@ import os
 from django.conf import settings
 # base_dir = 'D:\\Data Hansen\\Data Programming\\Projects\\Liturgi Generator\\src\\'
 base_dir = settings.BASE_DIR
+from io import BytesIO
 
 def NewDocument(data):
     # Get User Input
@@ -37,7 +38,7 @@ def NewDocument(data):
 
 
     # Read Template, Modify, and Save to New Docs
-    os.chdir(base_dir)
+    os.chdir(os.path.join(base_dir, 'liturgi'))
     document = Document('Liturgi_Template.docx')
     for paragraph in document.paragraphs:
         content = paragraph.text
@@ -110,5 +111,7 @@ def NewDocument(data):
                     else:
                         run.text = ''
     
-    os.chdir(base_dir)
-    document.save('New_Liturgi.docx')
+    output = BytesIO() #creates a in-memory buffer
+    document.save(output)
+    output.seek(0)
+    return output
