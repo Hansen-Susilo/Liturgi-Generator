@@ -151,7 +151,7 @@ def GetLyricsFile(songDict):
         verseNumberList.append(temp)
 
     # Search for the file
-    dir = os.path.join(base_dir, 'song book', str.upper(book))
+    dir = os.path.join(base_dir, 'song book - utf8', str.upper(book))
     os.chdir(dir)
     try:
         f = open(f'{bookNumber}.txt', 'r')
