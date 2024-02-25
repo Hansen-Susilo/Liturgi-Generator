@@ -165,7 +165,7 @@ table.table_right {
 }
 
 /* Set table size */
-.table_left, .table_left tr, .table_left td, .table_right, .table_right tr, .table_right td {
+.table_left tr, .table_left td, .table_right tr, .table_right td {
     height: 35px;
 }
 
