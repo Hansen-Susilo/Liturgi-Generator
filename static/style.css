@@ -6,8 +6,20 @@ body {
 main {
     color:rgb(5, 5, 58);
     margin: 100px 0px 95px 0px;
-    margin-left: 10vw;
-    margin-right: 10vw;
+}
+
+@media screen and (min-width: 601px) {
+    main {
+        margin-left: 10vw;
+        margin-right: 10vw;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        margin-left: 3vw;
+        margin-right: 3vw;
+    }
 }
 
 /* NAV BAR */
@@ -40,15 +52,15 @@ main {
 
 @media screen and (max-width: 600px) {
     .nav {
-        height: 6vh;
+        height: 7vh;
     }
     .navtext {
-        font-size: 12px;
+        font-size: 14px;
         text-align: end;
     }
     .navlogo_container {
-        height: 6vw;
-        width: 6vw;
+        height: 3.5vh;
+        width: 3.5vh;
     }
 }
 
@@ -133,10 +145,12 @@ main {
     box-sizing: border-box;
     padding: 0 13% 10px 13%;
     border-bottom: solid black 2px;
+    text-align: center;
 }
 
 .homepage_text {
     margin-top: 10px;
+    text-align: center;
 }
 
 .homepage_img {
@@ -244,9 +258,41 @@ table.table_right {
 }
 
 /* Input bar */
+@media screen and (min-width: 601px) {
+    table input {
+        width: 85%;
+    }
+    input.songBook, input.songBook_verse {
+        width: 20%;
+    }
+    input.songBook_number {
+        width: 15%;
+    }
+    textarea.songLyrics {
+        width: 85%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    table input {
+        width: 90%;
+    }
+    input.songBook, input.songBook_verse {
+        width: 35%;
+    }
+    input.songBook_number {
+        width: 30%;
+    }
+    input.songTitle {
+        width: 100%;
+    }
+    textarea.songLyrics {
+        width: 100%;
+    }
+}
+
 table input{
     font-size: 14px;
-    width: 85%;
     height: 25px;
     border: none;
     background-color: transparent;
@@ -282,33 +328,6 @@ input.songBook, input.songBook_verse, input.songBook_number {
     padding: 0 10px 0 10px;
     border-radius: 10px;
     margin-left: 5px;
-}
-
-@media screen and (min-width: 601px) {
-    input.songBook, input.songBook_verse {
-        width: 20%;
-    }
-    input.songBook_number {
-        width: 15%;
-    }
-    textarea.songLyrics {
-        width: 85%;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    input.songBook, input.songBook_verse {
-        width: 35%;
-    }
-    input.songBook_number {
-        width: 30%;
-    }
-    input.songTitle {
-        width: 100%;
-    }
-    textarea.songLyrics {
-        width: 100%;
-    }
 }
 
 textarea.songLyrics {
