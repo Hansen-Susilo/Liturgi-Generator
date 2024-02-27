@@ -14,7 +14,6 @@ main {
 .nav {
     background-color: rgb(5, 5, 58);
     color: lightgrey;
-    height: 12vh;
     padding-left: 2vw;
     padding-right: 2vw;
     position: fixed;
@@ -24,6 +23,33 @@ main {
     width: 100%;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+}
+
+@media screen and (min-width: 601px) {
+    .nav {
+        height: 12vh;
+    }
+    .navtext {
+        font-size: 20px;
+    }
+    .navlogo_container {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .nav {
+        height: 6vh;
+    }
+    .navtext {
+        font-size: 12px;
+        text-align: end;
+    }
+    .navlogo_container {
+        height: 6vw;
+        width: 6vw;
+    }
 }
 
 .navbox {
@@ -48,8 +74,6 @@ main {
 }
 
 .navlogo_container {
-    height: 40px;
-    width: 40px;
     padding: 5px;
     border-radius: 50%;
     background-color: rgb(228, 242, 255);
@@ -65,9 +89,20 @@ main {
 
 .navlink-container {
     height: 100%;
-    padding: 0 25px 0 25px;
     display: flex;
     align-items: center;
+}
+
+@media screen and (min-width: 601px){
+    .navlink-container {
+        padding: 0 25px 0 25px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .navlink-container {
+        padding: 0 15px 0 15px;
+    }
 }
 
 .navlink-container:hover {
@@ -80,7 +115,6 @@ main {
 
 .navtext {
     padding: 0 10px 0 10px;
-    font-size: 20px;
     color: lightgrey;
     border-bottom: 2px solid lightgray;
 }
@@ -115,9 +149,22 @@ main {
 }
 
 /* ABOUT US */
-.about_us_text {
-    width: 55%;
-    text-align: justify;
+@media screen and (min-width: 601px) {
+    .about_us_text {
+        width: 55%;
+        text-align: justify;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .about_us_text {
+        width: 100%;
+        text-align: justify;
+    }
+    .about_us_link {
+        width: 100%;
+        text-align: left;
+    }
 }
 
 /* FORM TABLE */
@@ -127,21 +174,44 @@ main {
     max-width: 100%;
     border-radius: 15px;
     padding: 15px 15px 15px 15px;
-    font-size: 18px
 }
 
-.table_container {
-    display: flex;
-    justify-content: space-between;
+@media screen and (min-width: 601px) {
+    .form_container {
+        font-size: 18px;
+    }
+    .table_container {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .table_left_container, .table_right_container {
+        width: 49%;
+        max-width: 49%;
+        border: 1px solid rgb(5, 5, 58);
+        border-radius: 10px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .form_container {
+        font-size: 14px;
+    }
+    .table_container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .table_left_container, .table_right_container {
+        width: 95%;
+        max-width: 95%;
+        border-radius: 10px;
+    }
 }
 
 .table_container table {
-    /* width: 49%; */
     width: 100%;
     max-width: 100%;
-    height: 100%;
-    border: 1px solid rgb(5, 5, 58);
-    border-radius: 10px;
     padding: 15px 0 15px 15px;
 }
 
@@ -171,16 +241,6 @@ table.table_right {
 
 .table_container td {
     padding-bottom: 15px;
-}
-
-.table_left_container {
-    width: 49%;
-    max-width: 49%;
-}
-
-.table_right_container {
-    width: 49%;
-    max-width: 49%;
 }
 
 /* Input bar */
@@ -224,12 +284,25 @@ input.songBook, input.songBook_verse, input.songBook_number {
     margin-left: 5px;
 }
 
-input.songBook, input.songBook_verse {
-    width: 20%;
+@media screen and (min-width: 601px) {
+    input.songBook, input.songBook_verse {
+        width: 20%;
+    }
+    input.songBook_number {
+        width: 15%;
+    }
 }
 
-input.songBook_number {
-    width: 15%;
+@media screen and (max-width: 600px) {
+    input.songBook, input.songBook_verse {
+        width: 35%;
+    }
+    input.songBook_number {
+        width: 30%;
+    }
+    input.songTitle {
+        width: 100%;
+    }
 }
 
 textarea.songLyrics {
@@ -256,9 +329,18 @@ textarea.songLyrics_hide {
 }
 
 /* Small text helper */
-.table_container .helper {
-    font-size: 12px;
+@media screen and (min-width: 601px) {
+    .table_container .helper {
+        font-size: 12px;
+    }
 }
+
+@media screen and (max-width: 600px) {
+    .table_container .helper {
+        font-size: 10px;
+    }
+}
+
 .table_container .helper p {
     margin-top: 0;
     line-height: 15px;
@@ -266,9 +348,20 @@ textarea.songLyrics_hide {
 
 /* Generate button */
 button {
-    width: 30%;
     font-size: 18px;
     padding: 10px 15px 10px 15px;
     border: 1px solid black;
     border-radius: 15px;
+}
+
+@media screen and (min-width: 601px) {
+    button {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    button {
+        width: 50%;
+    }
 }
