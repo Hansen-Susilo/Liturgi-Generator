@@ -291,6 +291,9 @@ input.songBook, input.songBook_verse, input.songBook_number {
     input.songBook_number {
         width: 15%;
     }
+    textarea.songLyrics {
+        width: 85%;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -303,12 +306,14 @@ input.songBook, input.songBook_verse, input.songBook_number {
     input.songTitle {
         width: 100%;
     }
+    textarea.songLyrics {
+        width: 100%;
+    }
 }
 
 textarea.songLyrics {
     box-sizing: border-box;
     resize: vertical;
-    width: 85%;
     max-height: 250px;
     min-height: 100px;
     margin-top: 5px;
