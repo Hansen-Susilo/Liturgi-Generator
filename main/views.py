@@ -18,7 +18,7 @@ def generator(response):
     if response.method == 'POST':
         # Get all data
         data = {
-            'date' : response.POST.get("date"),
+            'date' : response.POST.get("date", ""),
             'theme' : response.POST.get("theme", ""),
             'pdt' : response.POST.get("pdt", ""),
             'pnt' : response.POST.get("pnt", ""),
@@ -42,19 +42,40 @@ def generator(response):
         songBook_verse = response.POST.getlist('songBook_verse')
         songTitle = response.POST.getlist('songTitle')
         songLyrics = response.POST.getlist('songLyrics')
+        songLyrics_hide = response.POST.getlist('songLyrics_hide')
 
-        songDict = {
-            'songZip': zip(songLabels, songBook, songBook_number, songBook_verse, songTitle, songLyrics)
-        }
-        
+        # Input Validation
+        validate = True
+        errorList = []
+
+        #song validation
+        if songLyrics:
+            for book, lyrics in zip(songBook, songLyrics):
+                if not book and not lyrics:
+                    validate = False
+                    errorList.append("Isi lirik lagu untuk setiap lagu yang tidak dalam buku lagu.")
+                    break
+            #make songDict
+            songDict = {
+                'songZip': zip(songLabels, songBook, songBook_number, songBook_verse, songTitle, songLyrics)
+            }
+        else:
+            for book, lyrics in zip(songBook, songLyrics_hide):
+                if not book and not lyrics:
+                    validate = False
+                    break
+            #make songDict
+            songDict = {
+                'songZip': zip(songLabels, songBook, songBook_number, songBook_verse, songTitle, songLyrics_hide)
+            }
+
         data.update(songDict)
         context.update(data)
-
-        # Song Validation
-        validate = True
-        for book, lyrics in zip(songBook, songLyrics):
-            if not book and not lyrics:
-                validate = False
+        
+        errorDict = {
+            'errorList': errorList
+        }
+        context.update(errorDict)
         
         if validate:
             # Make New Document

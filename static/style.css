@@ -163,6 +163,10 @@ main {
 }
 
 /* ABOUT US */
+.about_us_link {
+    color: blue;
+}
+
 @media screen and (min-width: 601px) {
     .about_us_text {
         width: 55%;
@@ -181,7 +185,26 @@ main {
     }
 }
 
-/* FORM TABLE */
+
+/* GENERATOR */
+/* error box */
+.error_container {
+    color: red;
+}
+
+@media screen and (min-width: 601px) {
+    .error_container {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .error_container {
+        font-size: 10px;
+    }
+}
+
+/* form table */
 .form_container {
     background-color: lightgrey;
     border: 2px solid rgb(5, 5, 58);
@@ -352,7 +375,7 @@ textarea.songLyrics_hide {
     left: -999em;
 }
 
-/* Small text helper */
+/* small text helper */
 @media screen and (min-width: 601px) {
     .table_container .helper {
         font-size: 12px;

@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
 import os
+import io
 import json
 from django.conf import settings
-# base_dir = 'D:\\Data Hansen\\Data Programming\\Projects\\Liturgi Generator\\src\\'
 base_dir = settings.BASE_DIR
 delimiter = '~*~'
 
@@ -142,6 +142,7 @@ def GetLyricsFile(songDict):
                 for i in range(int(temp), int(temp2)+1):
                     verseNumberList.append(str(i))
                 temp = ''
+                temp2 = ''
         elif c == '-':
             dashMode = True
     if dashMode:
@@ -154,7 +155,7 @@ def GetLyricsFile(songDict):
     dir = os.path.join(base_dir, 'song book - utf8', str.upper(book))
     os.chdir(dir)
     try:
-        f = open(f'{bookNumber}.txt', 'r')
+        f = io.open(f'{bookNumber}.txt', mode='r', encoding='utf-8')
         lyrics = ''
         
         # Read verses

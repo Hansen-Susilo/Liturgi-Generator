@@ -6,6 +6,15 @@
 <form method="post">
     {% csrf_token %} 
     <div class="form_container">
+        {% if errorList %}
+        <div class="error_container">
+            <ul class="error_list">
+            {% for error in errorList %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
         <div class="table_container">
             <div class="table_left_container">
                 <table class="table_left">
@@ -156,9 +165,13 @@
                                 {% endif %}
 
                                 {% if songBook == "" %}
-                                <textarea class="songLyrics" name="songLyrics" placeholder="Tambahkan lirik di sini">{{ songLyrics }}</textarea>
+                                    {% if "Isi lirik lagu untuk setiap lagu yang tidak dalam buku lagu." in errorList and songLyrics == "" %}
+                                    <textarea class="songLyrics" name="songLyrics" style="border: red solid 1px;" placeholder="Tambahkan lirik di sini">{{ songLyrics }}</textarea>
+                                    {% else %}
+                                    <textarea class="songLyrics" name="songLyrics" placeholder="Tambahkan lirik di sini">{{ songLyrics }}</textarea>
+                                    {% endif %}
                                 {% else %}
-                                <textarea class="songLyrics_hide" name="songLyrics" tabindex="999" readonly></textarea>
+                                <textarea class="songLyrics_hide" name="songLyrics"  tabindex="999" readonly></textarea>
                                 {% endif %}
                             </td>
                         </tr>
@@ -176,7 +189,7 @@
                                     <input type='text' class='songBook_verse' name='songBook_verse' placeholder='Bait'/>
                                 </div>
                                 <input type='text' class='songTitle' name='songTitle' placeholder='Judul Lagu' required/>
-                                <textarea class="songLyrics_hide" name="songLyrics" tabindex="999" readonly></textarea>
+                                <textarea class="songLyrics_hide" name="songLyrics_hide" tabindex="999" readonly></textarea>
                             </td>
                         </tr>
                         {% endfor %}
@@ -185,7 +198,13 @@
             </div>
         </div>
         <div class="bottom_container">
-            <p>Apakah ada pelayanan pujian? <input type="checkbox" name="pelayananPujian"/></p>
+            <p>Apakah ada pelayanan pujian? 
+                {% if pelayananPujian %}
+                <input type="checkbox" name="pelayananPujian" checked/>
+                {% else %}
+                <input type="checkbox" name="pelayananPujian"/>
+                {% endif %}
+            </p>
             <button type="submit">Generate</button>
         </div>
     </div>
